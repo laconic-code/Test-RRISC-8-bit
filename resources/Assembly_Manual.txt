@@ -1,0 +1,70 @@
+Registers:
+  Mnemonic  Description
+  r0        general use register
+  r1        general use register
+  r2        general use register
+  r3        general use register
+  r4        general use register
+  r5        general use register
+  r6        general use register
+  r7        general use register
+  sys       system register, used for implementing pseudo instructions
+
+Instructions:
+  Mnemonic           Description
+  add rx ry rz       rz <- r1 + r2
+  not rx ry          ry <- !rx
+  set rx imm         rx <- imm
+  jmpz rx imm/label  if rx == 0, set the program counter to imm/label
+  
+Pseudo Instructions:
+  Mnemonic           Description
+  twos rx ry         ry <- twos(rx)
+  sub rx ry rz       rz <- ry - rx
+  halt               immediately stop processing
+
+Program start address: 0x00
+Program end address:   0xFF
+
+Syntax:
+
+  A single line may contain one of:
+    Comment
+    Label
+    Instruction
+  
+  Comment:
+    All comments begin with a '#' at the start of the line.
+    Comments are ignored for the purpose of assembly.
+  
+  Label:
+    Labels always consist of alphanumeric characters followed by a colon ':'
+    Labels MUST always start with an alphabetic character
+  
+  Instruction:
+    See 'Instructions', 'Pseduo Instructions', and 'Registers'
+    
+    r[x/y/z] denotes any register in 'Registers'
+    
+    imm denotes a byte immediate value
+      immediates may be given as:
+        hexdecimal values - written as 0x##
+        decimal values    - written as [-]###
+        binary values     - written as 0b########
+        ascii characters  - written as 'a'
+      negative binary values will be converted to twos complement during assembly
+      immediates are restricted to the values:
+        0x00 to 0xFF
+        -128 to 512
+        0b00000000 - 0b11111111
+        
+    label denotes any labels defined in the program
+
+  White space is allowed at the beginning of all lines and has no effect on assembly
+  All alphabetic characters are case insensitive, LABEL, LaBeL, and label are equivalent.
+  
+Execution:
+  All Programs begin executing at address 0x00, the first instruction in the code.
+
+  The last instruction address (0xFF) signals to the processor to halt.
+  This means that all programs are effectively limited to 512 - 1 instructions.
