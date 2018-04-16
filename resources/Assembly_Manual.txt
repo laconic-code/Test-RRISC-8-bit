@@ -19,9 +19,10 @@ Instructions:
   
 Pseudo Instructions:
   Mnemonic           Description
-  twos rx ry         ry <- twos(rx)
+  twos rx ry         ry <- twos_complement(rx)
   sub rx ry rz       rz <- ry - rx
   mov rx ry          ry <- rx
+  jmp imm/label      set the program counter to imm/label
   halt               immediately stop processing
 
 Program start address: 0x00

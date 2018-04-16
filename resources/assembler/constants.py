@@ -68,5 +68,12 @@ pseudo = {
     # copy one register to another
     "mov": lambda args: [
         "set sys 0",
-        "add sys %s %s" % (args[0], args[1])]
+        "add sys %s %s" % (args[0], args[1])],
+    
+    # jmp imm/label
+    # 4 bytes, 2 instructions
+    # set the program counter to imm/label
+    "jmp": lambda args: [
+        "set sys 0",
+        "jmpz sys %s" % (args[0])]
 }
