@@ -5,7 +5,7 @@ Done as a weekend project out of curiosity.
 
 # Requires:
 
-c++11 compiler
+c++11 compiler,
 python3
 
 # Resources:

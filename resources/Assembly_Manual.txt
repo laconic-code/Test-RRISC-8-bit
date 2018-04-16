@@ -21,6 +21,7 @@ Pseudo Instructions:
   Mnemonic           Description
   twos rx ry         ry <- twos(rx)
   sub rx ry rz       rz <- ry - rx
+  mov rx ry          ry <- rx
   halt               immediately stop processing
 
 Program start address: 0x00
