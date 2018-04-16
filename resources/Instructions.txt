@@ -1,0 +1,105 @@
+CPU Instructions
+
+All instructions are 16 bits (2 words).
+
+There are 4 instructions:
+  Name             Mnemonic
+  add              add
+  complement       not
+  load immediate   set
+  jump if zero     jmpz
+
+# Instructions
+
+============================================
+
+
+## add
+
+opcode: 00
+
+logical format:
++----+-----+-----+-----+-------+
+| 00 | xxx | yyy | zzz | 00000 |
++----+-----+-----+-----+-------+
+
+physical format:
++----------+----------+
+| 00xxxyyy | zzz00000 |
++----------+----------+
+
+xxx = source register 1
+yyy = source register 2
+zzz = destination register
+
+operation:
+Store the result of (source register 1) + (source register 2) in (destination register)
+
+
+============================================
+
+
+## complement
+
+opcode: 01
+
+logical format:
++----+-----+-----+----------+
+| 01 | xxx | yyy | 00000000 |
++----+-----+-----+----------+
+
+physical format:
++----------+----------+
+| 01xxxyyy | 00000000 |
++----------+----------+
+
+xxx = source register
+yyy = destination register
+
+operation:
+store the 1's complement of (source register) in (destination register)
+
+============================================
+
+
+## load immediate (set)
+opcode: 10
+
+logical format:
++----+-----+-----+----------+
+| 10 | xxx | 000 | dddddddd |
++----+-----+-----+----------+
+
+physical format:
++----------+----------+
+| 10xxx000 | dddddddd |
++----------+----------+
+
+xxx = destination register
+dddddddd = immediate
+
+operation:
+store (immediate) in (destination register)
+
+============================================
+
+
+## jump if zero
+
+opcode: 11
+
+logical format:
++----+-----+-----+----------+
+| 11 | xxx | 000 | dddddddd |
++----+-----+-----+----------+
+
+physical format:
++----------+----------+
+| 11xxx000 | dddddddd |
++----------+----------+
+
+xxx = source register
+dddddddd = destination
+
+operation:
+if the value of (source register) is equal to 0, set the program counter to (destination)
