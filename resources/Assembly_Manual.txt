@@ -12,7 +12,7 @@ Registers:
 
 Instructions:
   Mnemonic           Description
-  add rx ry rz       rz <- r1 + r2
+  add rx ry rz       rz <- rx + ry
   not rx ry          ry <- !rx
   set rx imm         rx <- imm
   jmpz rx imm/label  if rx == 0, set the program counter to imm/label
@@ -57,7 +57,7 @@ Syntax:
       negative binary values will be converted to twos complement during assembly
       immediates are restricted to the values:
         0x00 to 0xFF
-        -128 to 512
+        -128 to 256
         0b00000000 - 0b11111111
         
     label denotes any labels defined in the program
@@ -69,4 +69,4 @@ Execution:
   All Programs begin executing at address 0x00, the first instruction in the code.
 
   The last instruction address (0xFF) signals to the processor to halt.
-  This means that all programs are effectively limited to 512 - 1 instructions.
+  This means that all programs are effectively limited to 256 - 1 instructions.
